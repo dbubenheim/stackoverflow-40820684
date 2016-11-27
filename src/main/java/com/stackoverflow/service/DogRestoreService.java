@@ -3,7 +3,7 @@ package com.stackoverflow.service;
 import java.io.IOException;
 
 /**
- * @author dbubenheim@communicode.de
+ * @author daniel.bubenheim@gmail.com
  */
 public interface DogRestoreService {
     void restore() throws IOException;

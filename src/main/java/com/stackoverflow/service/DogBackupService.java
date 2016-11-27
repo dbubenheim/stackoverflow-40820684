@@ -5,7 +5,7 @@ import com.stackoverflow.model.Dog;
 import java.io.IOException;
 
 /**
- * @author dbubenheim@communicode.de
+ * @author daniel.bubenheim@gmail.com
  */
 public interface DogBackupService {
     void backup(Dog dog) throws IOException;
