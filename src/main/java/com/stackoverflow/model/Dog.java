@@ -21,7 +21,6 @@ public class Dog {
     }
 
     private Dog(final DogBuilder builder) {
-        this.id = builder.id;
         this.breedType = builder.breedType;
         this.imgUrl = builder.imgUrl;
         this.likes = builder.likes;
@@ -60,13 +59,11 @@ public class Dog {
     }
 
     public static class DogBuilder {
-        private final Long id;
         private String breedType;
         private String imgUrl;
         private long likes;
 
-        public DogBuilder(final Long id) {
-            this.id = id;
+        public DogBuilder() {
         }
 
         public DogBuilder likes(final long likes) {

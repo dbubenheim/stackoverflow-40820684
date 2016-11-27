@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContextEvent;
 
@@ -50,16 +50,17 @@ public class DogRestoreServiceImpl extends ContextLoaderListener implements DogR
             return;
         }
         final File dogLikesFile = path.toFile();
-        final Set<Dog> dogs = new HashSet<>();
+        final List<Dog> dogs = new ArrayList<>();
         String line;
         try (final BufferedReader reader = new BufferedReader(new FileReader(dogLikesFile))) {
             while ((line = reader.readLine()) != null) {
                 final String[] fields = line.split(DELIMITER);
-                final Dog dog = new Dog.DogBuilder(Long.parseLong(fields[FIELD_ID]))
+                final Dog dog = new Dog.DogBuilder()
                     .breedType(fields[FIELD_BREED_TYPE])
                     .imgUrl(fields[FIELD_IMG_URL])
                     .likes(Long.parseLong(fields[FIELD_LIKES]))
                     .build();
+                System.out.printf("restoring dog breed %s%n", dog.getBreedType());
                 dogs.add(dog);
             }
             this.dogRepository.save(dogs);
